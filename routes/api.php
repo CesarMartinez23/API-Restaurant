@@ -30,7 +30,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource("categories", CategoryController::class);
     Route::apiResource("restaurants", RestaurantController::class);
     Route::apiResource("dishes", DishController::class);
-    
 
+    Route::post('auth/logout', [AuthController::class, 'logout']);
+    
 });
 
