@@ -31,6 +31,31 @@ class AuthController extends Controller
     
         }
     
+        public function login(Request $request){
+            $validator = \Validator::make($request->input(), User::$loginRules);
+            if($validator->fails()){
+                return response()->json([
+                    'status' => false,
+                    'errors' => $validator->errors()->all()
+                ], 400);
+            }
+            if(!Auth::attempt($request->only('email', 'password'))){
+                return response()->json([
+                    'status' => false,
+                    'errors' => ['Unauthorized']
+                ], 401);
+            }
+            $user = User::where('email', $request->email)->first();
+            return response()->json([
+                'status' => true,
+                'message' => 'User logged in succesfully',
+                'data' => $user,
+                'token' => $user->createToken('API TOKEN')->plainTextToken
+            ], 200);
+    
+        }
+
+
 
 
 }
