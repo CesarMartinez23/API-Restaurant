@@ -60,12 +60,16 @@ class CategoryController extends Controller
         //
         // $request->validate(Category::$rules);
 
-        if($request->has('name')){
-            $category->name = $request->name;
-        }
+        // if($request->has('name')){
+        //     $category->name = $request->name;
+        // }
+
+        $category->fill($request->only(['name']));
 
         if($request->has('image_path')){
-            unlink(public_path('Categories/'.$category->image_path));
+            if(file_exists(public_path('Categories/'.$category->image_path))) {
+                unlink(public_path('Categories/'.$category->image_path));
+            }
             $image = $request->file('image_path');
             $image_name = $image->getClientOriginalName();
             $image->move(public_path('Categories'), $image_name);
