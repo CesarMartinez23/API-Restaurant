@@ -11,6 +11,53 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
 
+/**
+     * @OA\POST(
+     *     path="/api/auth/register",
+     *     tags={"Authentication"},
+     *     summary="Register",
+     *     description="Register to system.",
+     *     operationId="register",
+     *     @OA\RequestBody(
+     *         description="Pet object that needs to be added to the store",
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *            @OA\Schema(
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="name",
+     *                     description="User Name",
+     *                     type="string",
+     *                     example="Jhon Doe"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="email",
+     *                     description="User Email",
+     *                     type="string",
+     *                     example="jhon@email.com"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     description="User password",
+     *                     type="string",
+     *                     example="12345678"
+     *                
+     *                 ),
+     *                 required={"name", "email", "password"}
+     *             )
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid input"
+     *     )
+     * )
+     */
         //creación de usuarios
         public function create(Request $request){
             $validator = \Validator::make($request->input(), User::$rules);
@@ -35,29 +82,41 @@ class AuthController extends Controller
     
 
         /**
-     * Display the specified resource.
-     */
-    /**
-     * Mostrar la información de restaurant
-     * @OA\Get (
+     * @OA\POST(
      *     path="/api/auth/login",
-     *     tags={"Login"},
-     *     @OA\Parameter(
-     *         in="path",
-     *         name="id",
+     *     tags={"Authentication"},
+     *     summary="Login",
+     *     description="Login to system.",
+     *     operationId="login",
+     *     @OA\RequestBody(
+     *         description="Pet object that needs to be added to the store",
      *         required=true,
-     *         @OA\Schema(type="string")
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *            @OA\Schema(
+     *                 type="object",
+     *                 @OA\Property(
+     *                     property="email",
+     *                     description="User Email",
+     *                     type="string"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="password",
+     *                     description="User password",
+     *                     type="string"
+     *                 ),
+     *                 required={"email", "password"}
+     *             )
+     *         ),
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="OK",
-     *         @OA\JsonContent(
-     *              @OA\Property(property="id", type="number", example=1),
-     *              @OA\Property(property="name", type="string", example="Aderson Felix"),
-     *              @OA\Property(property="imagen_path", type="string", example="1.png"),
-     *         )
+     *         description="successful operation",
      *     ),
-     *      
+     *     @OA\Response(
+     *         response=400,
+     *         description="Invalid input"
+     *     )
      * )
      */
         public function login(Request $request){

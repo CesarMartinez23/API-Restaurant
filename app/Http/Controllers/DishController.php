@@ -16,6 +16,7 @@ class DishController extends Controller
      * @OA\Get (
      *     path="/api/dishes",
      *     tags={"Dish"},
+     *     security={{"bearer":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -125,6 +126,7 @@ class DishController extends Controller
      *             )
      *         )
      *      ),
+     *      security={{"bearer":{}}},
      *      @OA\Response(
      *          response=201,
      *          description="CREATED",
@@ -187,6 +189,7 @@ class DishController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     *      security={{"bearer":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -263,6 +266,7 @@ class DishController extends Controller
      *             )
      *         )
      *      ),
+     *      security={{"bearer":{}}},
      *      @OA\Response(
      *          response=200,
      *          description="success",
@@ -329,6 +333,7 @@ class DishController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     *      security={{"bearer":{}}},
      *     @OA\Response(
      *         response=204,
      *         description="NO CONTENT"

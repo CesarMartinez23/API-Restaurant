@@ -26,6 +26,7 @@ class RestaurantController extends Controller
      * @OA\Get (
      *     path="/api/restaurants",
      *     tags={"Restaurant"},
+     *     security={{"bearer":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -150,6 +151,7 @@ class RestaurantController extends Controller
      *             )
      *         )
      *      ),
+     *      security={{"bearer":{}}},
      *      @OA\Response(
      *          response=201,
      *          description="CREATED",
@@ -215,6 +217,7 @@ class RestaurantController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     *     security={{"bearer":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -297,6 +300,7 @@ class RestaurantController extends Controller
      *             )
      *         )
      *      ),
+     *      security={{"bearer":{}}},
      *      @OA\Response(
      *          response=200,
      *          description="success",
@@ -385,6 +389,7 @@ class RestaurantController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     *     security={{"bearer":{}}},
      *     @OA\Response(
      *         response=204,
      *         description="NO CONTENT"

@@ -16,6 +16,7 @@ class CategoryController extends Controller
      * @OA\Get (
      *     path="/api/categories",
      *     tags={"Category"},
+     *    security={{"bearer":{}}},
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -66,6 +67,7 @@ class CategoryController extends Controller
      * @OA\Post (
      *     path="/api/categories",
      *     tags={"Category"},
+     *     
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -88,6 +90,7 @@ class CategoryController extends Controller
      *             )
      *         )
      *      ),
+     *      security={{"bearer":{}}},
      *      @OA\Response(
      *          response=201,
      *          description="CREATED",
@@ -144,6 +147,9 @@ class CategoryController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     * 
+     *      security={{"bearer":{}}},
+     * 
      *     @OA\Response(
      *         response=200,
      *         description="OK",
@@ -200,6 +206,7 @@ class CategoryController extends Controller
      *             )
      *         )
      *      ),
+     *      security={{"bearer":{}}},
      *      @OA\Response(
      *          response=200,
      *          description="success",
@@ -266,6 +273,7 @@ class CategoryController extends Controller
      *         required=true,
      *         @OA\Schema(type="string")
      *     ),
+     *      security={{"bearer":{}}},
      *     @OA\Response(
      *         response=204,
      *         description="NO CONTENT"
