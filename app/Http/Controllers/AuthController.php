@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
         //creación de usuarios
         public function create(Request $request){
             $validator = \Validator::make($request->input(), User::$rules);
@@ -30,7 +31,35 @@ class AuthController extends Controller
             ], 200);
     
         }
+        
     
+
+        /**
+     * Display the specified resource.
+     */
+    /**
+     * Mostrar la información de restaurant
+     * @OA\Get (
+     *     path="/api/auth/login",
+     *     tags={"Login"},
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *              @OA\Property(property="id", type="number", example=1),
+     *              @OA\Property(property="name", type="string", example="Aderson Felix"),
+     *              @OA\Property(property="imagen_path", type="string", example="1.png"),
+     *         )
+     *     ),
+     *      
+     * )
+     */
         public function login(Request $request){
             $validator = \Validator::make($request->input(), User::$loginRules);
             if($validator->fails()){
