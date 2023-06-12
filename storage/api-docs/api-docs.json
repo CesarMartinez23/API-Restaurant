@@ -1,0 +1,1321 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API AppRestaurant",
+        "description": "Listado de URI´S de la API restaurante",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000"
+        }
+    ],
+    "paths": {
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Register",
+                "description": "Register to system.",
+                "operationId": "register",
+                "requestBody": {
+                    "description": "Pet object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "User Name",
+                                        "type": "string",
+                                        "example": "Jhon Doe"
+                                    },
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string",
+                                        "example": "jhon@email.com"
+                                    },
+                                    "password": {
+                                        "description": "User password",
+                                        "type": "string",
+                                        "example": "12345678"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login",
+                "description": "Login to system.",
+                "operationId": "login",
+                "requestBody": {
+                    "description": "Pet object that needs to be added to the store",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Listado de las catogorias",
+                "operationId": "3f5817a34833d0a1f4af4548dd3aeaba",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Aderson"
+                                                    },
+                                                    "imagen_path": {
+                                                        "type": "string",
+                                                        "example": "1.png"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Registrar la información de la categoria",
+                "operationId": "71fcad552bb0eaba9fb191fd8d8dcab0",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "imagen_path": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix",
+                                    "imagen_path": "1.png"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Mostrar la información de una categoria",
+                "operationId": "c68e76d323c008827a9e47398b1583de",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Actualizar la información de la categoria",
+                "operationId": "0e686b2748211cc688333ed705dc111f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "imagen_path": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix Editado",
+                                    "imagen_path": "1.png"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix Editado"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The name field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Eliminar la información de una categoria",
+                "operationId": "4c12e22a7f8c617bd83bfa1fdc05428d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/dishes": {
+            "get": {
+                "tags": [
+                    "Dish"
+                ],
+                "summary": "Listado de los dishes",
+                "operationId": "ddf841d9ba35d917bd22a504c13b2f72",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Aderson"
+                                                    },
+                                                    "imagen_path": {
+                                                        "type": "string",
+                                                        "example": "1.png"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Pasta"
+                                                    },
+                                                    "price": {
+                                                        "type": "numeric",
+                                                        "example": "0"
+                                                    },
+                                                    "restaurant_id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Dish"
+                ],
+                "summary": "Registrar la información del dish",
+                "operationId": "3fc0252a7de74dac3747d26739c844cb",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "imagen_path": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "numeric"
+                                            },
+                                            "restaurant_id": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix",
+                                    "imagen_path": "P1.png",
+                                    "description": "datos",
+                                    "price": "10",
+                                    "restaurant_id": "1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "pasta"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "example": "0"
+                                        },
+                                        "restaurant_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The description field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/dishes/{id}": {
+            "get": {
+                "tags": [
+                    "Dish"
+                ],
+                "summary": "Mostrar la información de un dish",
+                "operationId": "07b6fe7c8dc79b35e66b58956b97b893",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "pasta"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "example": "0"
+                                        },
+                                        "restaurant_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Dish"
+                ],
+                "summary": "Eliminar la información de un dish",
+                "operationId": "57bb2309cba8e67241d5d84d8ceb6beb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/dishes/{id}": {
+            "put": {
+                "tags": [
+                    "Dish"
+                ],
+                "summary": "Actualizar la información del dish",
+                "operationId": "3fe03e4e62306720eb569b0a830cce40",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "imagen_path": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "numeric"
+                                            },
+                                            "restaurant_id": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix",
+                                    "imagen_path": "P1.png",
+                                    "description": "datos",
+                                    "price": "10",
+                                    "restaurant_id": "1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "pasta"
+                                        },
+                                        "price": {
+                                            "type": "number",
+                                            "example": "0"
+                                        },
+                                        "restaurant_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The description field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/restaurants": {
+            "get": {
+                "tags": [
+                    "Restaurant"
+                ],
+                "summary": "Listado de restaurants",
+                "operationId": "0ef65917394f8eb77311d1d085ff31e4",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "rows": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "number",
+                                                        "example": "1"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Aderson"
+                                                    },
+                                                    "imagen_path": {
+                                                        "type": "string",
+                                                        "example": "1.png"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Datos"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "etc"
+                                                    },
+                                                    "phone": {
+                                                        "type": "string",
+                                                        "example": "60020601"
+                                                    },
+                                                    "categori_id": {
+                                                        "type": "sinteger",
+                                                        "example": "1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T00:09:16.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "example": "2023-02-23T12:33:45.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Restaurant"
+                ],
+                "summary": "Registrar la información del restautant",
+                "operationId": "938db3c3288b69d111a27774178532ab",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "imagen_path": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "type": "string",
+                                                "example": "etc"
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "example": "60020601"
+                                            },
+                                            "categori_id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix",
+                                    "imagen_path": "1.png",
+                                    "description": "datos",
+                                    "address": "datos",
+                                    "phone": "60020601",
+                                    "category_id": "1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "pasta"
+                                        },
+                                        "address": {
+                                            "type": "string",
+                                            "example": "datos"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "60020601"
+                                        },
+                                        "category_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The description field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/restaurants/{id}": {
+            "get": {
+                "tags": [
+                    "Restaurant"
+                ],
+                "summary": "Mostrar la información de restaurant",
+                "operationId": "26e68feb8cf848945261ce292866ec2c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "pasta"
+                                        },
+                                        "address": {
+                                            "type": "string",
+                                            "example": "datos"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "60020601"
+                                        },
+                                        "category_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Restaurant"
+                ],
+                "summary": "Actualizar la información de restaurant",
+                "operationId": "ab7fcec28e65e4b5fda3035e61228114",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "imagen_path": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "categori_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Aderson Felix",
+                                    "imagen_path": "1.png",
+                                    "description": "datos",
+                                    "address": "datos",
+                                    "phone": "60020601",
+                                    "category_id": "1"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Aderson Felix"
+                                        },
+                                        "imagen_path": {
+                                            "type": "string",
+                                            "example": "1.png"
+                                        },
+                                        "description": {
+                                            "type": "string",
+                                            "example": "pasta"
+                                        },
+                                        "address": {
+                                            "type": "string",
+                                            "example": "datos"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "60020601"
+                                        },
+                                        "category_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T00:09:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2023-02-23T12:33:45.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "UNPROCESSABLE CONTENT",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The description field is required."
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "example": "Objeto de errores"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Restaurant"
+                ],
+                "summary": "Eliminar la información de restaurant",
+                "operationId": "7270982c262ae0c4e547d5eec368e436",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "NO CONTENT"
+                    },
+                    "404": {
+                        "description": "NOT FOUND",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No se pudo realizar correctamente la operación"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
