@@ -19,7 +19,7 @@ class DishResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'image_path' => url($this->image_path),
+            'image_path' => url("Dishes/".$this->image_path),
             'description' => $this->description,
             'price' => $this->price,
         ];
